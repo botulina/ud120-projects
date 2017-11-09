@@ -9,6 +9,7 @@
 """
     
 import sys
+import numpy as np
 from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
@@ -25,8 +26,10 @@ features_train, features_test, labels_train, labels_test = preprocess()
 #########################################################
 ### your code goes here ###
 from sklearn.svm import SVC
-clf = SVC(kernel="linear")
+clf = SVC(kernel="rbf",C=10000)
 
+#features_train = features_train[:len(features_train)/100] 
+#labels_train = labels_train[:len(labels_train)/100] 
 t0 = time()
 clf.fit(features_train,labels_train)
 print "training time:", round(time()-t0, 3), "s"
@@ -39,6 +42,9 @@ from sklearn.metrics import accuracy_score
 acc = round(accuracy_score(labels_test,pred), 5)
 print "accuracy:", acc
 
+print np.bincount(pred)
+
 #########################################################
-
-
+### training time: 332.671 s
+### predicting time: 34.717 s
+### accuracy: 0.98407

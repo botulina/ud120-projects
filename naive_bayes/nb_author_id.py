@@ -40,5 +40,6 @@ acc = round(accuracy_score(labels_test,pred), 5)
 print "accuracy:", acc
 
 #########################################################
-
-
+### training time: 3.082 s
+### predicting time: 0.475 s
+### accuracy: 0.97327
