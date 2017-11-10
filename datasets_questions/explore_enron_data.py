@@ -56,3 +56,19 @@ for i in enron_data:
     if enron_data[i]['salary'] != 'NaN':
         salary += 1
 print 'salary', salary
+
+tpymnt = 0
+for i in enron_data:
+    if enron_data[i]['total_payments'] == 'NaN':
+        tpymnt += 1
+print tpymnt, "total_payment"
+print round(tpymnt / float(len(enron_data)),3) , "total_payments"
+poin = 0
+poiymnt = 0
+for i in enron_data:
+    if enron_data[i]['poi'] == True:
+        poin +=1
+        if enron_data[i]['total_payments'] == 'NaN':
+            poiymnt += 1
+print poin, "POI #"
+print round(poiymnt / float(len(enron_data)),3) , "poi_payments"
